@@ -1,0 +1,259 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}Checkout - Food Mania{% endblock %}
+
+{% block css %}
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  #cont, #cont2 {
+    min-height: 640px;
+  }
+  .form-control::placeholder {
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+  .badge-pill {
+    font-size: 0.85rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+      body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f2f7ff, #e4ecf7);
+    }
+
+    .checkout-container {
+      padding: 3rem 1rem;
+    }
+
+    .section-title {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      color: #7f8c8d;
+    }
+
+    .card {
+      border-radius: 1rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .form-floating > .form-control {
+      border-radius: 0.75rem;
+    }
+
+    .btn-custom {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border-radius: 2rem;
+    }
+
+    .btn-custom:hover {
+      transform: translateY(-2px);
+    }
+
+    .note-box {
+      background: rgba(255, 193, 7, 0.2);
+      border-left: 5px solid #ffc107;
+      border-radius: 0.5rem;
+    }
+
+
+  
+</style>
+{% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container py-4" id="cont">
+  <div class="row">
+    <!-- 🛒 Cart Items -->
+    <div class="col-lg-6 col-md-12 mb-4">
+      <div class="section-title"><span class="text-warning">🛒</span> Review Your Cart</div>
+      <ul class="list-group shadow-sm" id="items"></ul>
+    </div>
+
+    <!-- 📝 Checkout Form -->
+   {% if user.is_authenticated %}
+ <div class="container checkout-container" data-aos="zoom-in">
+    <div class="text-center mb-5">
+      <h2 class="section-title">🛍️ Express Checkout</h2>
+      <p class="section-subtitle">Review your cart and provide delivery details</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Cart Items -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="card shadow-sm border-0 p-4 h-100">
+          <h4 class="mb-4">🧾 Cart Items</h4>
+          <ul class="list-group list-group-flush" id="items"></ul>
+        </div>
+      </div>
+
+      <!-- Checkout Form -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="card shadow-sm border-0 p-4">
+          <h4 class="mb-4">🚚 Delivery Details</h4>
+          <form method="post" action="/shop/checkout/">
+            {% csrf_token %}
+            <input type="hidden" name="itemsJson" id="itemsJson">
+            <input type="hidden" name="amount" id="amount">
+            <input type="hidden" name="user_id" id="user_id" value="{{ request.user.id }}">
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+              <label for="name">Full Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+              <label for="email">Email Address</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="address1" name="address1" placeholder="123 Street" required>
+              <label for="address1">Address Line 1</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite">
+              <label for="address2">Address Line 2</label>
+            </div>
+
+            <div class="row g-2">
+              <div class="col-md-5 form-floating mb-3">
+                <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                <label for="city">City</label>
+              </div>
+              <div class="col-md-5 form-floating mb-3">
+                <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
+                <label for="state">State</label>
+              </div>
+              <div class="col-md-2 form-floating mb-3">
+                <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip" required pattern="[0-9]{6}">
+                <label for="zip_code">Zip</label>
+              </div>
+            </div>
+
+            <div class="form-floating mb-4">
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="03XXXXXXXXX" required pattern="[0-9]{10,11}">
+              <label for="phone">Phone Number</label>
+            </div>
+
+            <div class="note-box p-3 mb-4">
+              <strong>Note:</strong> Online Payment is currently <b>disabled</b>. Please use Cash On Delivery.
+            </div>
+
+            <div class="text-end">
+              <button type="submit" class="btn btn-outline-secondary btn-custom me-2" name="onlinePay" disabled>Online Pay</button>
+              <button type="submit" class="btn btn-success btn-custom" name="cashOnDelivery">Cash On Delivery</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+<!-- Not Logged In -->
+<div class="container d-flex justify-content-center align-items-center" id="cont2" data-aos="fade-in">
+  <div class="alert alert-info text-center mt-5 p-4 w-75 shadow-sm">
+    <h4 class="mb-2">🔐 Login Required</h4>
+    <p>To proceed with checkout, please <strong><a href="#" class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong>.</p>
+  </div>
+</div>
+{% endif %}
+
+
+  </div>
+</div>
+{% else %}
+<!-- Not Logged In -->
+<div class="container d-flex justify-content-center align-items-center" id="cont2">
+  <div class="alert alert-info text-center mt-5 p-4 w-75 shadow-sm">
+    <h4 class="mb-2">🔐 Login Required</h4>
+    <p>To proceed with checkout, please <strong><a href="#" class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong>.</p>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+{% block js %}
+<script>
+  // Cart Initialization
+  let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+  let totalQty = 0;
+  let totalPrice = 0;
+  let itemHtml = '';
+
+  if ($.isEmptyObject(cart)) {
+    itemHtml = `
+      <div class='alert alert-warning text-center'>
+        <h5>Your cart is <strong>empty</strong>.</h5>
+        <a href="/shop/" class="btn btn-sm btn-outline-primary mt-2">Browse Menu</a>
+      </div>
+    `;
+    $('#items').html(itemHtml);
+    document.getElementById('info')?.remove();
+    document.getElementById('title')?.remove();
+  } else {
+    let i = 1;
+    for (let key in cart) {
+      const [qty, name, price] = cart[key];
+      const lineTotal = qty * price;
+      totalQty += qty;
+      totalPrice += lineTotal;
+      itemHtml += `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ${i++}. ${name}
+          <span class="badge badge-primary badge-pill">${qty} x ₹${price} = ₹${lineTotal}</span>
+        </li>`;
+    }
+    itemHtml += `
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-light font-weight-bold">
+        Total: <span class="badge badge-danger badge-pill" id="totalPrice">₹${totalPrice}</span>
+      </li>`;
+    $('#items').html(itemHtml);
+  }
+
+  // Update summary
+  document.getElementById('cart').innerText = totalQty;
+  $('#itemsJson').val(JSON.stringify(cart));
+  $('#amount').val(totalPrice);
+
+  {% if thank %}
+    alert('🎉 Thanks for ordering! Your Order ID is {{ id }}.');
+    localStorage.clear();
+    window.location = "/shop";
+  {% endif %}
+
+  
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800
+    });
+  </script>
+
+
+{% endblock %}

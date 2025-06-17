@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+    <title>{% block title%} {% endblock %}</title>
+    <link rel = "icon" href ="http://127.0.0.1:8000/media/shop/images/logo.png" type = "image/x-icon">
+    <style>
+      .popover-header {
+        background-color: #dfd7d7
+      }
+       .navbar-nav .nav-link {
+    font-weight: 500;
+    color: #333 !important;
+    white-space: nowrap;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #007bff !important;
+  }
+
+  .form-inline input {
+    width: 220px;
+  }
+
+  .btn {
+    font-weight: 500;
+  }
+
+  @media (max-width: 991.98px) {
+    .form-inline {
+      margin-top: 10px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .form-inline input,
+    .form-inline button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+    }
+  }
+
+  /* Login CSS */
+  /* Modern glass modal */
+.modern-modal {
+  background: rgba(0, 123, 254, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0, 123, 254, 0.3);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.btn-login {
+  background: linear-gradient(to right, #007bfe, #0056d2);
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  background: linear-gradient(to right, #0056d2, #003f9e);
+  box-shadow: 0 5px 15px rgba(0, 123, 254, 0.5);
+  transform: translateY(-2px);
+}
+
+.toggle-password {
+  position: absolute;
+  top: 38px;
+  right: 15px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.toggle-password:hover {
+  color: #168a5b;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.signup-modal {
+  background: #0e1b2b;
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #1f2d3d;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.signup-modal .modal-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.form-floating-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-floating-group input {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  background: transparent;
+  border: 1px solid #6c757d;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.form-floating-group label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background-color: #0e1b2b;
+  padding: 0 4px;
+}
+
+.form-floating-group input:focus + label,
+.form-floating-group input:not(:placeholder-shown):not(:focus):valid + label {
+  top: 0.4rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: #007bfe;
+}
+
+.phone-prefix {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.toggle-password:hover {
+  color: #fff;
+}
+
+.btn-signup {
+  background: linear-gradient(to right, #007bfe, #0056d2);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn-signup:hover {
+  background: linear-gradient(to right, #0056d2, #003c9e);
+  box-shadow: 0 5px 15px rgba(0, 123, 254, 0.5);
+  transform: translateY(-2px);
+}
+  .form-control::placeholder {
+    color: #ccc;
+  }
+
+  /* Transparent Navbar (default) */
+  .navbar {
+    background: transparent !important;
+    box-shadow: none;
+    backdrop-filter: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .navbar .nav-link, .navbar .navbar-brand, .navbar .btn, .navbar .dropdown-toggle {
+    color: #fff !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.25);
+    transition: color 0.3s;
+  }
+  .navbar .btn-outline-success, .navbar .btn-outline-primary {
+    border-color: #fff;
+    color: #fff !important;
+    background: rgba(255,255,255,0.08);
+  }
+  .navbar .btn-outline-success:hover, .navbar .btn-outline-primary:hover {
+    background: #fff;
+    color: #007bfe !important;
+  }
+  .navbar .btn-dark {
+    background: #fff;
+    color: var(--accent, #007bfe);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    position: relative;
+    transition: background 0.3s, color 0.3s;
+  }
+  .navbar .btn-dark i {
+    color: var(--accent, #007bfe);
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  .navbar .btn-dark #cart {
+    color: var(--accent, #007bfe);
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .navbar .dropdown-menu {
+    background: rgba(30,30,30,0.97);
+    color: #fff;
+  }
+  .navbar .dropdown-item {
+    color: #fff;
+  }
+  .navbar .dropdown-item:hover {
+    background: #007bfe;
+    color: #fff;
+  }
+  /* Solid Navbar (on scroll) */
+  .navbar.solid-navbar {
+    background: #fff !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  }
+  .navbar.solid-navbar .nav-link,
+  .navbar.solid-navbar .navbar-brand,
+  .navbar.solid-navbar .btn,
+  .navbar.solid-navbar .dropdown-toggle {
+    color: #222 !important;
+    text-shadow: none;
+  }
+  .navbar.solid-navbar .btn-outline-success, .navbar.solid-navbar .btn-outline-primary {
+    border-color: #007bfe;
+    color: #007bfe !important;
+    background: transparent;
+  }
+  .navbar.solid-navbar .btn-outline-success:hover, .navbar.solid-navbar .btn-outline-primary:hover {
+    background: #007bfe;
+    color: #fff !important;
+  }
+  .navbar.solid-navbar .btn-dark {
+    background: #222;
+    color: #fff;
+  }
+  .navbar.solid-navbar .btn-dark i,
+  .navbar.solid-navbar .btn-dark #cart {
+    color: #fff;
+  }
+  .navbar.solid-navbar .dropdown-menu {
+    background: #fff;
+    color: #222;
+  }
+  .navbar.solid-navbar .dropdown-item {
+    color: #222;
+  }
+  .navbar.solid-navbar .dropdown-item:hover {
+    background: #007bfe;
+    color: #fff;
+  }
+  /* Hero Section */
+  .hero-section {
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1500&q=80') center center/cover no-repeat;
+    min-height: 480px;
+    position: relative;
+    padding-top: 120px;
+    margin-bottom: 0;
+  }
+  .hero-section .container {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.60);
+    z-index: 1;
+  }
+  .hero-section h1, .hero-section p {
+    position: relative;
+    z-index: 2;
+  }
+  /* Modern Search Bar */
+  .hero-search-form {
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-search-form .input-group {
+    border-radius: 50px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+    overflow: hidden;
+    background: rgba(255,255,255,0.95);
+  }
+  .hero-search-form input[type="search"] {
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    padding: 1.1rem 1.5rem;
+    color: #222;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+    box-shadow: none;
+  }
+  .hero-search-form input[type="search"]:focus {
+    background: #f5faff;
+    color: #007bfe;
+  }
+  .hero-search-form .btn {
+    border-radius: 0 50px 50px 0;
+    font-size: 1.3rem;
+    padding: 0 2rem;
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    border: none;
+    transition: background 0.2s;
+  }
+  .hero-search-form .btn:hover {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    color: #fff;
+  }
+  @media (max-width: 767px) {
+    .hero-section { min-height: 340px; padding-top: 80px; }
+    .hero-section h1 { font-size: 2rem; }
+    .hero-search-form .input-group { font-size: 1rem; }
+  }
+  body {
+    background: #fff !important;
+  }
+  .card-body {
+  background-color: #f6f6f6;
+}
+
+.row {
+  padding: 50px;
+}
+/* For specific product cards */
+.product-card .card-body {
+  background-color: #f6f6f6;
+}
+
+/* For specific rows */
+.main-content-row {
+  padding: 50px;
+}
+
+      {% block css %} 
+      {% endblock %}
+    </style>
+
+    <!-- Javascripy -->
+<script>
+  function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (!input || !icon) return; // Safety check
+
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script>
+
+<script>
+// Navbar color change on scroll (works on all pages)
+window.addEventListener('DOMContentLoaded', function() {
+  var navbar = document.querySelector('.navbar');
+  var hero = document.querySelector('.hero-section');
+  function onScroll() {
+    var threshold = hero ? (hero.offsetHeight - 80) : 50;
+    if (window.scrollY > threshold) {
+      navbar.classList.add('solid-navbar');
+    } else {
+      navbar.classList.remove('solid-navbar');
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+});
+</script>
+
+
+
+
+
+  </head>
+  <body>
+
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2 fixed-top">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand font-weight-bold d-flex align-items-center" href="/shop">
+      <img src="https://axixtechnologies.com/wp-content/uploads/2024/02/nnew-logo-white.png" alt="Logo" height="38" class="mr-2">
+      <span class="ml-2" style="font-size:1.4rem;">The Food Mania</span>
+    </a>
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbar"
+      aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <!-- Left: Navigation Links -->
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop"><i class="fas fa-home mr-1"></i>Home</a></li>
+        <li class="nav-item dropdown mx-1" id="categoryList">
+          <a class="nav-link dropdown-toggle px-2" href="#" id="categoryDropdown" role="button" data-toggle="dropdown">
+            <i class="fas fa-utensils mr-1"></i>Categories
+          </a>
+          <div class="dropdown-menu shadow-sm border-0">
+            <a class="dropdown-item py-2" href="#"><i class="fas fa-pizza-slice mr-2"></i>Pizza</a>
+            <a class="dropdown-item py-2" href="#"><i class="fas fa-hamburger mr-2"></i>Burger</a>
+          </div>
+        </li>
+        <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop/tracker"><i class="fas fa-truck mr-1"></i>Tracker</a></li>
+        <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop/orderView/"><i class="fas fa-clipboard-list mr-1"></i>Your Orders</a></li>
+        <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop/about"><i class="fas fa-info-circle mr-1"></i>About Us</a></li>
+        <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop/contact"><i class="fas fa-envelope mr-1"></i>Contact Us</a></li>
+      </ul>
+      <!-- Right: Auth & Cart -->
+      <ul class="navbar-nav ml-3 align-items-center">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown mr-2">
+          <a class="btn btn-outline-primary rounded-pill dropdown-toggle d-flex align-items-center px-3 py-1" href="#" data-toggle="dropdown">
+            <i class="fas fa-user-circle mr-2"></i>
+            {{ request.user }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+            <a class="dropdown-item py-2" href="/shop/logout/"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item mr-2">
+          <button class="btn btn-outline-success rounded-pill px-3 py-1" data-toggle="modal" data-target="#loginModal">
+            <i class="fas fa-sign-in-alt mr-2"></i>Login
+          </button>
+        </li>
+        <li class="nav-item mr-2">
+          <button class="btn btn-outline-primary rounded-pill px-3 py-1" data-toggle="modal" data-target="#signupModal">
+            <i class="fas fa-user-plus mr-2"></i>SignUp
+          </button>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <button class="btn btn-dark rounded-pill d-flex align-items-center px-3 py-1" id="popcart"
+            data-container="body" data-html="true" data-toggle="popover" title="MyCart" data-placement="bottom" data-content="Bottom popover">
+            <i class="fas fa-shopping-cart mr-2"></i>
+            <span>(<span id="cart">0</span>)</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <!-- Login Modal -->
+<!-- MODERN LOGIN MODAL WITH EYE ICON -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modern-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white w-100 text-center">🔐 Welcome Back</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/shop/login/" method="post" class="px-3">{% csrf_token %}
+          <div class="form-group">
+            <label for="loginusername" class="text-white">Username</label>
+            <input type="text" class="form-control form-control-lg" id="loginusername" name="loginusername" placeholder="e.g. johndoe" required>
+          </div>
+
+          <div class="form-group position-relative">
+            <label for="loginpassword" class="text-white">Password</label>
+            <input type="password" class="form-control form-control-lg" id="loginpassword" name="loginpassword" placeholder="••••••••" required>
+            <span class="toggle-password" onclick="togglePassword()">
+              <i id="eyeIcon" class="fas fa-eye"></i>
+            </span>
+          </div>
+
+          <button type="submit" class="btn btn-block btn-login mt-3">Login</button>
+
+          <div class="text-center mt-3">
+            <a href="/shop/reset_password/" class="text-light small">Forgot Password?</a>
+          </div>
+
+          <p class="text-center text-white mt-4 mb-0">
+            Don't have an account? 
+            <a href="#" class="text-light font-weight-bold" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!-- Sign up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modern-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white w-100 text-center">📝 Create Your Account</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/shop/signup/" method="post" class="px-3">{% csrf_token %}
+
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username" class="text-white">Username</label>
+            <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="e.g. johndoe" required />
+          </div>
+
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="f_name" class="text-white">First Name</label>
+            <input type="text" id="f_name" name="f_name" class="form-control form-control-lg" placeholder="e.g. John" required />
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="l_name" class="text-white">Last Name</label>
+            <input type="text" id="l_name" name="l_name" class="form-control form-control-lg" placeholder="e.g. Doe" required />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email1" class="text-white">Email</label>
+            <input type="email" id="email1" name="email1" class="form-control form-control-lg" placeholder="e.g. john@example.com" required />
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone" class="text-white">Phone</label>
+            <input type="tel" id="phone" name="phone" class="form-control form-control-lg" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required />
+          </div>
+
+          <!-- Password -->
+          <div class="form-group position-relative">
+  <label for="password" class="text-white">Password</label>
+  <input type="password" id="password" name="password" class="form-control form-control-lg pr-5" placeholder="••••••••" required />
+  <i id="eyeIcon1" class="fas fa-eye toggle-password"
+     onclick="togglePassword('password', 'eyeIcon1')"
+     style="position: absolute; right: 20px; top: 70%; transform: translateY(-50%); cursor: pointer; color: #aaa;"></i>
+</div>
+
+
+          <!-- Confirm Password -->
+          <div class="form-group position-relative">
+  <label for="password1" class="text-white">Re-enter Password</label>
+  <input type="password" id="password1" name="password1" class="form-control form-control-lg pr-5" placeholder="••••••••" required />
+  <i id="eyeIcon2" class="fas fa-eye toggle-password"
+     onclick="togglePassword('password1', 'eyeIcon2')"
+     style="position: absolute; right: 20px; top: 70%; transform: translateY(-50%); cursor: pointer; color: #aaa;"></i>
+</div>
+
+
+          <button type="submit" class="btn btn-block btn-login mt-3">Sign Up</button>
+
+          <p class="text-center text-white mt-4 mb-0">
+            Already have an account? 
+            <a href="#" class="text-light font-weight-bold" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {% if messages %}
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+            {% for message in messages %}
+            <div id="toast-{{ forloop.counter }}" class="toast align-items-center text-white {% if message.tags == 'success' %}bg-success{% elif message.tags == 'error' %}bg-danger{% elif message.tags == 'warning' %}bg-warning{% else %}bg-info{% endif %} border-0 mb-2 show" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 320px;">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {% if message.tags == 'success' %}
+                            <i class="fas fa-check-circle me-2"></i>
+                        {% elif message.tags == 'error' %}
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                        {% elif message.tags == 'warning' %}
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                        {% else %}
+                            <i class="fas fa-info-circle me-2"></i>
+                        {% endif %}
+                        {{ message }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" onclick="this.closest('.toast').style.display='none';"></button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(function(toast) {
+              toast.classList.add('show');
+              setTimeout(function() {
+                toast.classList.remove('show');
+                toast.style.opacity = 0;
+                setTimeout(function() { toast.style.display = 'none'; }, 400);
+              }, 3000);
+            });
+          });
+        </script>
+    {% endif %}
+    {% block body %} {% endblock %}
+    <div class="footer container-fluid bg-dark text-light">
+        <p class="text-center py-2 mb-0">Copyright © 2025 Designed by Axix Technologies <a href="" target="_blank" rel="noopener noreferrer">@AxixTechnologies</a></p>
+    </div>
+
+
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+    {% block js %} {% endblock %}
+<!--    <script>-->
+<!--    /* restrict user browser click go back button */-->
+<!--    function preback() { window.history.forward(); }-->
+<!--    setTimeout("preback()", 0);-->
+<!--    window.onunload = function() { null };-->
+
+<!--    /* Left click dissabled (not select any content or text)*/-->
+<!--    function disableselect(e) { return false; }-->
+
+<!--    function reEnable() { return true; }-->
+<!--    document.onselectstart = new Function("return false")-->
+<!--    if (window.sidebar) {-->
+<!--        document.onmousedown = disableselect-->
+<!--        document.onclick = reEnable-->
+<!--    }-->
+
+<!--    /* Right click dissabled */-->
+<!--    function ieClicked() { if (document.all) { return false; } }-->
+
+<!--    function firefoxClicked(e) { if (document.layers || (document.getElementById && !document.all)) { if (e.which == 2 || e.which == 3) { return false; } } }-->
+<!--    if (document.layers) {-->
+<!--        document.captureEvents(Event.MOUSEDOWN);-->
+<!--        document.onmousedown = firefoxClicked;-->
+<!--    } else {-->
+<!--        document.onmouseup = firefoxClicked;-->
+<!--        document.oncontextmenu = ieClicked;-->
+<!--    }-->
+<!--    document.oncontextmenu = new Function("return false")-->
+
+<!--    /* Dissable shortcut key */-->
+<!--    document.onkeydown = function(e) {-->
+<!--        if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 89 || e.keyCode === 90))) { return false; }-->
+<!--        return true;-->
+<!--    };-->
+<!--    </script>-->
+  </body>
+</html>
