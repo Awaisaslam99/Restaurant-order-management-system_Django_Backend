@@ -2,7 +2,6 @@
 {% block title %}Contact Us – Food Mania{% endblock %}
 {% block css %}
 <style>
-  /* Modern color palette inspired by food */
   :root {
     --primary: #FF6B6B;
     --secondary: #FFA07A;
@@ -27,7 +26,6 @@
     overflow: hidden;
   }
 
-  /* Fallback if image doesn't load */
   .contact-hero:before {
     content: "";
     position: absolute;
@@ -47,15 +45,8 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .contact-grid {
@@ -64,12 +55,14 @@
     gap: 2rem;
   }
 
-  .contact-form {
-    background: white;
+  .contact-form,
+  .contact-info {
+    position: relative;
+    overflow: hidden;
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    background: var(--light);
   }
 
   .contact-form:hover {
@@ -78,11 +71,6 @@
 
   .contact-info {
     background: var(--light);
-    border-radius: 15px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
   .contact-info:before {
@@ -95,8 +83,7 @@
     background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
   }
 
-  .form-title,
-  .info-title {
+  .form-title, .info-title {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     font-weight: 700;
@@ -104,10 +91,7 @@
     display: inline-block;
   }
 
-  .form-title {
-    color: var(--primary);
-  }
-
+  .form-title { color: var(--primary); }
   .form-title:after {
     content: "";
     position: absolute;
@@ -119,10 +103,7 @@
     border-radius: 2px;
   }
 
-  .info-title {
-    color: var(--secondary);
-  }
-
+  .info-title { color: var(--secondary); }
   .info-title:after {
     content: "";
     position: absolute;
@@ -186,20 +167,9 @@
   }
 
   @keyframes ripple {
-    0% {
-      transform: scale(0, 0);
-      opacity: 1;
-    }
-
-    20% {
-      transform: scale(25, 25);
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(40, 40);
-    }
+    0% { transform: scale(0, 0); opacity: 1; }
+    20% { transform: scale(25, 25); opacity: 1; }
+    100% { opacity: 0; transform: scale(40, 40); }
   }
 
   .info-item {
@@ -227,15 +197,8 @@
     box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
   }
 
-  .info-content h5 {
-    color: var(--dark);
-    margin-bottom: 0.3rem;
-  }
-
-  .info-content p {
-    color: #666;
-    margin-bottom: 0;
-  }
+  .info-content h5 { color: var(--dark); margin-bottom: 0.3rem; }
+  .info-content p { color: #666; margin-bottom: 0; }
 
   .social-links {
     display: flex;
@@ -265,54 +228,29 @@
 
   .food-decoration {
     position: absolute;
-    opacity: 0.1;
+    opacity: 0.08;
     z-index: 0;
     font-size: 5rem;
+    pointer-events: none;
   }
 
-  .food-1 {
-    top: 20px;
-    right: 20px;
-  }
+  .food-1 { top: 20px; right: 20px; }
+  .food-2 { bottom: 20px; left: 20px; }
+  .food-3 { bottom: 40%; right: 10%; font-size: 3rem; }
 
-  .food-2 {
-    bottom: 20px;
-    left: 20px;
-  }
-
-  .food-3 {
-    bottom: 40%;
-    right: 10%;
-    font-size: 3rem;
-  }
-
-  .info-content-wrapper {
+  .info-content-wrapper, .form-content-wrapper {
     position: relative;
     z-index: 1;
   }
 
-  /* Responsive adjustments */
   @media (max-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-hero {
-      min-height: 200px;
-    }
-
-    .form-title,
-    .info-title {
-      font-size: 1.5rem;
-    }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-hero { min-height: 200px; }
+    .form-title, .info-title { font-size: 1.5rem; }
   }
 
   @media (max-width: 576px) {
-
-    .contact-form,
-    .contact-info {
-      padding: 1.5rem;
-    }
+    .contact-form, .contact-info { padding: 1.5rem; }
   }
 </style>
 {% endblock %}
@@ -328,23 +266,29 @@
 <div class="contact-container">
   <div class="contact-grid">
     <div class="contact-form">
-      <h2 class="form-title">Send us a message</h2>
-      <form action="/shop/contact/" method="POST">{% csrf_token %}
-        <div class="form-group">
-          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}"
-            required>
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" rows="5" id="desc" name="desc" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-food mt-3">Send Message</button>
-      </form>
+      <!-- Decorative Emojis for Form Section -->
+      <span class="food-decoration food-1">🍕</span>
+      <span class="food-decoration food-2">🍔</span>
+      <span class="food-decoration food-3">🍣</span>
+
+      <div class="form-content-wrapper">
+        <h2 class="form-title">Send us a message</h2>
+        <form action="/shop/contact/" method="POST">{% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="5" id="desc" name="desc" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-food mt-3">Send Message</button>
+        </form>
+      </div>
     </div>
 
     <div class="contact-info">
@@ -356,9 +300,7 @@
         <h2 class="info-title">Contact Information</h2>
 
         <div class="info-item">
-          <div class="info-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
           <div class="info-content">
             <h5>Our Location</h5>
             <p>Pak Office: 138 D1, Main Boulevard, Gulberg III - Lahore, Pak.</p>
@@ -366,42 +308,32 @@
         </div>
 
         <div class="info-item">
-          <div class="info-icon">
-            <i class="fas fa-phone-alt"></i>
-          </div>
+          <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
           <div class="info-content">
             <h5>Call Us</h5>
-            <p>+1 251 546 9442</p>
-            <p>+1 630 446 8851</p>
+            <p>+1 251 546 9442</p><p>+1 630 446 8851</p>
           </div>
         </div>
 
         <div class="info-item">
-          <div class="info-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
           <div class="info-content">
             <h5>Email Us</h5>
-            <p>info@axixtechnologies.com</p>
-            <p>hr@axixtechnologies.com</p>
+            <p>info@axixtechnologies.com</p><p>hr@axixtechnologies.com</p>
           </div>
         </div>
 
         <div class="info-item">
-          <div class="info-icon">
-            <i class="fas fa-clock"></i>
-          </div>
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
           <div class="info-content">
             <h5>Opening Hours</h5>
-            <p>Monday - Saturday: 10am - 7pm</p>
-            <p>Saturday - Sunday: 10am - 12pm</p>
+            <p>Monday - Saturday: 10am - 7pm</p><p>Saturday - Sunday: 10am - 12pm</p>
           </div>
         </div>
 
         <div class="social-links">
           <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/axixtechnologiesinc?igsh=eXg2OTlmcmR2NjI3" class="social-link"
-            aria-label="Instagram" ><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/axixtechnologiesinc?igsh=eXg2OTlmcmR2NjI3" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
           <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
@@ -418,13 +350,10 @@
   window.location.href = "/shop";
   {% endif %}
 
-  // Add smooth scrolling to all links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>

@@ -6,17 +6,13 @@
   @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
   
   :root {
-    --primary: #FF6B6B;
-    --secondary: #FFA07A;
-    --accent: #FFD166;
-    --light: #FFF8F0;
-    --dark: #2E2E2E;
-    --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.95);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --container-padding: 30px;
-    --card-margin: 20px 8px;
-    --carousel-padding: 60px;
+    --primary: #e63946;
+    --secondary: #c1121f;
+    --accent: #ffc107;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --card-margin: 8px;
   }
 
   body {
@@ -25,27 +21,9 @@
     overflow-x: hidden;
   }
 
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary);
-  }
-
-  /* Hero Section */
+  /* Hero Section (unchanged) */
   .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    background: linear-gradient(rgb(0 0 0 / 29%), rgb(0 0 0 / 36%)), 
                 url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
@@ -55,105 +33,44 @@
     justify-content: center;
     text-align: center;
     color: white;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     position: relative;
     overflow: hidden;
   }
-
-  .hero-content {
-    max-width: 900px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-title {
-    font-size: 4.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: fadeInDown 1s ease-out;
-    background: linear-gradient(45deg, #fff, #f0f0f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-subtitle {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-    animation: fadeInUp 1s ease-out 0.3s both;
-  }
-
-  /* Hero Section Food Icons */
-  .hero-icons {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-  }
-
-  .hero-icon {
-    position: absolute;
-    font-size: 3rem;
-    opacity: 0.7;
-    animation: float 6s ease-in-out infinite;
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-20px) rotate(5deg);
-    }
-  }
-
-  .icon-1 { top: 15%; left: 10%; animation-delay: 0s; }
-  .icon-2 { top: 25%; right: 15%; animation-delay: 1s; }
-  .icon-3 { top: 60%; left: 15%; animation-delay: 2s; }
-  .icon-4 { top: 70%; right: 10%; animation-delay: 3s; }
-  .icon-5 { top: 40%; left: 5%; animation-delay: 0.5s; }
-  .icon-6 { top: 50%; right: 8%; animation-delay: 1.5s; }
-  .icon-7 { top: 80%; left: 20%; animation-delay: 2.5s; }
-  .icon-8 { top: 30%; right: 25%; animation-delay: 3.5s; }
 
   /* Container and Layout */
   .container {
     max-width: 1400px;
-    padding: 0 var(--container-padding);
+    padding: 0 15px;
     margin: 0 auto;
   }
 
-  /* Product Cards */
+  /* Compact Product Cards */
   .product-card {
     border: none;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
     margin: var(--card-margin);
     height: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    background: white;
     position: relative;
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out forwards;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    min-width: 0;
+    max-width: 100%;
+    border: 1px solid #f0f0f0;
   }
 
   .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
 
   .product-img-container {
-    height: 380px;
+    height: 140px;
     overflow: hidden;
     position: relative;
   }
@@ -162,32 +79,35 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s ease;
   }
 
   .product-card:hover .product-img {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 
   .card-body {
-    padding: 30px;
-    background: var(--glass-bg);
-    position: relative;
+    padding: 12px;
   }
 
   .product-title {
-    font-size: 1.6rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--dark);
+    margin-bottom: 6px;
+    color: #333;
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* min-height: 2.6em; */
   }
 
   .product-price {
     color: var(--primary);
     font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
   }
@@ -195,851 +115,282 @@
   .old-price {
     text-decoration: line-through;
     color: #999;
-    font-size: 1.1rem;
-    margin-left: 10px;
+    font-size: 0.75rem;
+    margin-left: 6px;
     font-weight: 400;
   }
 
   .product-desc {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
     color: #666;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8em;
+    line-height: 1.4;
   }
 
   .product-rating {
     color: var(--accent);
-    margin-bottom: 20px;
-    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
 
   .product-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    position: relative;
+    gap: 6px;
+    margin-top: 10px;
   }
 
   .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: var(--glass-bg);
-    padding: 5px;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
+    gap: 4px;
+    background: #f8f9fa;
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
   }
 
   .quantity-controls button {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border: none;
     background: var(--primary);
     color: white;
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   .quantity-controls button:hover {
     background: var(--secondary);
-    transform: scale(1.05);
   }
 
   .quantity-controls input {
-    width: 40px;
+    width: 26px;
     border: none;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--dark);
     background: transparent;
   }
 
-  .quantity-controls input:focus {
-    outline: none;
-  }
-
   .btn-cart {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
+    border-radius: 6px;
+    padding: 6px 10px;
     color: white;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
+    font-size: 0.75rem;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.3px;
+    gap: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(230, 57, 70, 0.2);
+  }
+
+  .row {
+    justify-content: center;
   }
 
   .btn-cart:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
   }
 
   .btn-cart i {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  .btn-cart:hover i {
-    transform: translateX(2px);
+    font-size: 0.8rem;
   }
 
   .btn-view {
     background: white;
-    border: 1.5px solid var(--primary);
-    border-radius: 12px;
-    padding: 12px;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    padding: 6px;
     color: var(--primary);
     font-weight: 500;
-    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.1);
+    transition: all 0.2s ease;
   }
 
   .btn-view:hover {
     background: var(--primary);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
   }
 
   .btn-view i {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
+    font-size: 0.8rem;
   }
 
-  .btn-view:hover i {
-    transform: scale(1.1);
-  }
-
-  /* Update the column classes in the carousel items */
-  .carousel-item .row {
-    margin: 0 -8px;  /* Adjusted row margins */
-  }
-
-  .carousel-item .col-lg-4 {
-    padding: 0 8px;  /* Adjusted column padding */
-  }
-
-  /* Modern Carousel Design */
-  .product-carousel {
-    margin-bottom: 80px;
-    position: relative;
-    padding: 0 var(--carousel-padding);
-  }
-
-  /* Carousel Controls */
-  .carousel-control-prev, 
-  .carousel-control-next {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid white;
-    z-index: 10;
-  }
-
-  .carousel-control-prev {
-    left: -50px;
-  }
-
-  .carousel-control-next {
-    right: -50px;
-  }
-
-  .carousel-control-prev:hover, 
-  .carousel-control-next:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.4);
-  }
-
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    width: 28px;
-    height: 28px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
-  }
-
-  .carousel-control-prev:hover .carousel-control-prev-icon {
-    transform: translateX(-3px);
-  }
-
-  .carousel-control-next:hover .carousel-control-next-icon {
-    transform: translateX(3px);
-  }
-
-  /* Carousel Indicators */
-  .carousel-indicators {
-    bottom: -40px;
-    margin-bottom: 0;
-  }
-
-  .carousel-indicators li {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ddd;
-    margin: 0 6px;
-    transition: all 0.3s ease;
-    border: none;
-  }
-
-  .carousel-indicators .active {
-    width: 30px;
-    border-radius: 6px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-  }
-
-  /* Category Header with Carousel */
+  /* Category Header */
   .category-header {
     text-align: center;
-    margin-bottom: 60px;
+    /* margin-bottom: 40px; */
     position: relative;
-    padding: 20px 0;
   }
 
   .category-title {
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: var(--primary);
     display: inline-block;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     position: relative;
-    animation: fadeIn 1s ease-out;
   }
 
   .category-title:after {
     content: "";
     position: absolute;
-    width: 120px;
+    width: 80px;
     height: 3px;
     background: linear-gradient(to right, var(--primary), var(--secondary));
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
-    animation: widthGrow 1s ease-out;
   }
 
-  @keyframes widthGrow {
-    from { width: 0; }
-    to { width: 120px; }
+  /* Carousel Adjustments */
+  .product-carousel {
+    margin-bottom: 60px;
+  }
+
+  .carousel-control-prev, 
+  .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    border: 2px solid white;
+  }
+
+  .carousel-control-prev {
+    /* left: -20px; */
+  }
+
+  .carousel-control-next {
+    /* right: -20px; */
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
   }
 
   /* Responsive Breakpoints */
-  /* Large Desktops (1400px and up) */
-  @media (min-width: 1400px) {
-    .container {
-      max-width: 1320px;
-    }
-
+  @media (min-width: 576px) {
     .product-img-container {
-      height: 400px;
+      height: 150px;
     }
-
+    
     .product-title {
-      font-size: 1.7rem;
+      font-size: 0.95rem;
     }
-
+    
     .product-price {
-      font-size: 1.9rem;
-    }
-  }
-
-  /* Desktops (1200px to 1399px) */
-  @media (max-width: 1399px) {
-    .container {
-      max-width: 1140px;
-    }
-
-    .product-img-container {
-      height: 360px;
-    }
-
-    .product-title {
-      font-size: 1.6rem;
-    }
-
-    .product-price {
-      font-size: 1.8rem;
-    }
-  }
-
-  /* Small Desktops (992px to 1199px) */
-  @media (max-width: 1199px) {
-    :root {
-      --container-padding: 25px;
-      --carousel-padding: 50px;
-    }
-
-    .container {
-      max-width: 960px;
-    }
-
-    .product-img-container {
-      height: 340px;
-    }
-
-    .product-title {
-      font-size: 1.5rem;
-    }
-
-    .product-price {
-      font-size: 1.7rem;
-    }
-
-    .product-desc {
       font-size: 1rem;
     }
-  }
-
-  /* Tablets (768px to 991px) */
-  @media (max-width: 991px) {
-    :root {
-      --container-padding: 20px;
-      --carousel-padding: 40px;
-      --card-margin: 15px 6px;
-    }
-
-    .container {
-      max-width: 720px;
-    }
-
-    .product-img-container {
-      height: 300px;
-    }
-
-    .card-body {
-      padding: 25px;
-    }
-
-    .product-title {
-      font-size: 1.4rem;
-    }
-
-    .product-price {
-      font-size: 1.6rem;
-    }
-
+    
     .product-desc {
-      font-size: 0.95rem;
+      font-size: 0.75rem;
     }
-
-    .product-actions {
-      flex-direction: row;
-      gap: 8px;
-    }
-
+    
     .btn-cart {
-      padding: 10px 20px;
-      font-size: 0.95rem;
+      padding: 7px 12px;
+      font-size: 0.8rem;
     }
-
+    
     .btn-view {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
     }
   }
 
-  /* Large Phones (576px to 767px) */
-  @media (max-width: 767px) {
-    :root {
-      --container-padding: 15px;
-      --carousel-padding: 30px;
-      --card-margin: 15px 5px;
-    }
-
-    .container {
-      max-width: 540px;
-    }
-
-    .product-card {
-      margin: 15px auto;
-      max-width: 500px;
-    }
-
+  @media (min-width: 768px) {
     .product-img-container {
-      height: 280px;
+      height: 160px;
     }
-
+    
     .card-body {
-      padding: 20px;
+      padding: 14px;
     }
-
+    
     .product-title {
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
-
+    
     .product-price {
-      font-size: 1.5rem;
+      font-size: 1.05rem;
     }
-
-    .product-desc {
-      font-size: 0.9rem;
-    }
-
-    .carousel-control-prev, 
-    .carousel-control-next {
-      width: 45px;
-      height: 45px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  /* Small Phones (up to 575px) */
-  @media (max-width: 575px) {
-    :root {
-      --container-padding: 10px;
-      --carousel-padding: 20px;
-      --card-margin: 10px 0;
-    }
-
-    .container {
-      padding: 0 var(--container-padding);
-    }
-
-    .product-carousel {
-      padding: 0 var(--carousel-padding);
-    }
-
-    .product-card {
-      margin: var(--card-margin);
-    }
-
-    .product-img-container {
-      height: 250px;
-    }
-
-    .card-body {
-      padding: 15px;
-    }
-
-    .product-title {
-      font-size: 1.2rem;
-    }
-
-    .product-price {
-      font-size: 1.4rem;
-    }
-
-    .product-desc {
-      font-size: 0.85rem;
-      margin-bottom: 15px;
-    }
-
-    .product-actions {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .btn-cart {
-      width: 100%;
-      padding: 12px 20px;
-    }
-
-    .btn-view {
-      width: 100%;
-      height: 45px;
-    }
-
-    .carousel-control-prev, 
-    .carousel-control-next {
-      width: 40px;
-      height: 40px;
-    }
-
-    .carousel-control-prev {
-      left: 5px;
-    }
-
-    .carousel-control-next {
-      right: 5px;
-    }
-  }
-
-  /* Landscape Mode for Phones */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .product-img-container {
-      height: 200px;
-    }
-
-    .card-body {
-      padding: 15px;
-    }
-
-    .product-title {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .product-price {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
+    
     .product-desc {
       font-size: 0.8rem;
-      margin-bottom: 10px;
     }
-  }
-
-  /* Responsive Design */
-  @media (max-width: 1400px) {
-    .container {
-      max-width: 1140px;
-      padding: 0 20px;
-    }
-
-    .product-img-container {
-      height: 340px;
-    }
-
-    .product-title {
-      font-size: 1.4rem;
-    }
-
-    .product-price {
-      font-size: 1.6rem;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    .container {
-      max-width: 960px;
-    }
-
-    .product-img-container {
-      height: 320px;
-    }
-
-    .product-title {
-      font-size: 1.3rem;
-    }
-
-    .product-price {
-      font-size: 1.5rem;
-    }
-
-    .product-desc {
-      font-size: 0.95rem;
-    }
-  }
-
-  @media (max-width: 992px) {
-    .container {
-      max-width: 720px;
-    }
-
-    .product-img-container {
-      height: 300px;
-    }
-
-    .product-title {
-      font-size: 1.2rem;
-    }
-
-    .product-price {
-      font-size: 1.4rem;
-    }
-
-    .product-desc {
-      font-size: 0.9rem;
-    }
-
+    
     .btn-cart {
-      padding: 10px 20px;
-      font-size: 0.9rem;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
+    .category-title {
+      font-size: 2.2rem;
     }
   }
 
-  @media (max-width: 768px) {
-    .container {
-      padding: 0 15px;
+  @media (min-width: 992px) {
+    .product-card {
+      margin: 10px;
+    }
+    
+    .product-img-container {
+      height: 170px;
+    }
+    
+    .card-body {
+      padding: 15px;
+    }
+    
+    .product-title {
+      font-size: 1.05rem;
+    }
+    
+    .product-price {
+      font-size: 1.1rem;
     }
 
-    .product-carousel {
-      padding: 0;
-      margin: 0 -15px;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-      display: none;
-    }
-
-    .carousel-item {
-      padding: 0;
-    }
-
-    .carousel-item .row {
-      margin: 0;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 10px 15px;
-    }
-
-    .carousel-item .row::-webkit-scrollbar {
-      display: none;
-    }
-
+    /* Show more cards per slide on larger screens */
     .carousel-item .col-lg-4 {
-      flex: 0 0 85%;
-      max-width: 85%;
-      scroll-snap-align: center;
-      padding: 0 10px;
-    }
-
-    .product-card {
-      margin: 5px 0;
-      border-radius: 15px;
-    }
-
-    .product-img-container {
-      height: 250px;
-    }
-
-    .card-body {
-      padding: 15px;
-    }
-
-    .product-title {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .product-price {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .product-desc {
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .product-rating {
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .product-actions {
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .quantity-controls {
-      width: 100%;
-      justify-content: space-between;
-      padding: 8px;
-    }
-
-    .quantity-controls button {
-      width: 36px;
-      height: 36px;
-    }
-
-    .quantity-controls input {
-      width: 50px;
-      font-size: 1.1rem;
-    }
-
-    .btn-cart {
-      width: 100%;
-      padding: 12px 20px;
-      font-size: 1rem;
-    }
-
-    .btn-view {
-      width: 100%;
-      height: 45px;
+      flex: 0 0 25%;
+      max-width: 25%;
     }
   }
 
-  @media (max-width: 576px) {
-    .container {
-      padding: 0 15px;
-    }
-
-    .product-img-container {
-      height: 220px;
-    }
-
-    .card-body {
-      padding: 12px;
-    }
-
-    .product-title {
-      font-size: 1rem;
-    }
-
-    .product-price {
-      font-size: 1.2rem;
-    }
-
-    .product-desc {
-      font-size: 0.8rem;
-    }
-
-    .product-rating {
-      font-size: 0.85rem;
-    }
-
-    .quantity-controls {
-      padding: 6px;
-    }
-
-    .quantity-controls button {
-      width: 32px;
-      height: 32px;
-      font-size: 1rem;
-    }
-
-    .quantity-controls input {
-      width: 40px;
-      font-size: 1rem;
-    }
-
-    .btn-cart {
-      padding: 10px 15px;
-      font-size: 0.9rem;
-    }
-
-    .btn-view {
-      height: 40px;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .product-img-container {
-      height: 200px;
-    }
-
-    .card-body {
-      padding: 10px;
-    }
-
-    .product-title {
-      font-size: 0.95rem;
-    }
-
-    .product-price {
-      font-size: 1.1rem;
-    }
-
-    .product-desc {
-      font-size: 0.75rem;
-    }
-
-    .product-rating {
-      font-size: 0.8rem;
-    }
-
-    .quantity-controls {
-      padding: 5px;
-    }
-
-    .quantity-controls button {
-      width: 28px;
-      height: 28px;
-      font-size: 0.9rem;
-    }
-
-    .quantity-controls input {
-      width: 35px;
-      font-size: 0.9rem;
-    }
-
-    .btn-cart {
-      padding: 8px 12px;
-      font-size: 0.85rem;
-    }
-
-    .btn-view {
-      height: 35px;
-    }
-  }
-
-  /* Landscape Mode for Phones */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .product-img-container {
-      height: 200px;
-    }
-
-    .card-body {
-      padding: 10px;
-    }
-
-    .product-title {
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-    }
-
-    .product-price {
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-
-    .product-desc {
-      font-size: 0.75rem;
-      margin-bottom: 10px;
-    }
-
-    .product-rating {
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-    }
-
-    .product-actions {
-      gap: 5px;
-    }
-
-    .btn-cart {
-      padding: 8px 12px;
-      font-size: 0.8rem;
-    }
-
-    .btn-view {
-      height: 35px;
+  @media (min-width: 1200px) {
+    .carousel-item .col-lg-4 {
+      flex: 0 0 23%;
+      max-width: 57%;
+      height: 100%;
     }
   }
 </style>
@@ -1050,18 +401,6 @@
 
 <!-- Hero Section -->
 <div class="hero-section">
-  <!-- Hero Section Food Icons -->
-  <div class="hero-icons">
-    <div class="hero-icon icon-1">🍕</div>
-    <div class="hero-icon icon-2">🍔</div>
-    <div class="hero-icon icon-3">🍣</div>
-    <div class="hero-icon icon-4">🍩</div>
-    <div class="hero-icon icon-5">🍜</div>
-    <div class="hero-icon icon-6">🍖</div>
-    <div class="hero-icon icon-7">🍗</div>
-    <div class="hero-icon icon-8">🍤</div>
-  </div>
-  
   <div class="hero-content">
     <h1 class="hero-title">Delicious Food Delivered Fast</h1>
     <p class="hero-subtitle">Order from your favorite restaurants with just a few clicks</p>
@@ -1104,7 +443,7 @@
                   <img src='/media/{{i.image}}' class="product-img card-img-top" alt="{{i.product_name}}">
                 </div>
                 <div class="card-body">
-                  <h5 class="product-title" id="namepr{{i.id}}">{{i.product_name|slice:"0:20"}}...</h5>
+                  <h5 class="product-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
                   <div class="product-rating">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -1112,12 +451,12 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                   </div>
-                  <p class="product-price">Rs. <span id="pricepr{{i.id}}">{{i.price}}</span>/-
+                  <p class="product-price">Rs. <span id="pricepr{{i.id}}">{{i.price}}</span>
                     {% if i.price > 200 %}
                     <span class="old-price">Rs. {{i.price|add:50}}</span>
                     {% endif %}
                   </p>
-                  <p class="product-desc">{{i.desc|slice:"0:23"}}...</p>
+                  <p class="product-desc">{{i.desc}}</p>
                   
                   <div class="product-actions">
                     <div id="divpr{{i.id}}" class="divpr">
@@ -1131,7 +470,7 @@
               </div>
             </div>
             
-            {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+            {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
           </div>
         </div>
         <div class="carousel-item">
@@ -1207,7 +546,7 @@ function updatePopover(cart) {
 function clearCart() {
   cart = JSON.parse(localStorage.getItem('cart'));
   for (var item in cart) {
-    document.getElementById('div' + item).innerHTML = '<button id="'+ item +'" class="btn btn-primary cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>'
+    document.getElementById('div' + item).innerHTML = '<button id="'+ item +'" class="btn btn-cart cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>'
   }
   localStorage.clear();
   cart = {};
@@ -1235,7 +574,7 @@ $('.divpr').on("click", "button.minus", function() {
     cart['pr' + a][0] = cart['pr' + a][0] - 1;
     cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
     if(cart['pr' + a][0] == 0) {
-        document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-primary cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>';
+        document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-cart cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>';
         delete cart['pr'+a];
     }
     else {
@@ -1250,8 +589,6 @@ $('.divpr').on("click", "button.plus", function() {
     document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
     updateCart(cart);
 });
-
-document.getElementById('categoryList').innerHTML = '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a><div class="dropdown-menu" aria-labelledby="navbarDropdown" >{% for product, range, nSlides in allProds %}<a class="dropdown-item" href="/shop/search/?search={{product.0.category}}">{{product.0.category}}</a>{% endfor %}</div>';
 
 // Add animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
@@ -1272,40 +609,6 @@ document.addEventListener('DOMContentLoaded', function() {
   cards.forEach((card, index) => {
     card.dataset.index = index;
     observer.observe(card);
-  });
-
-  // Add parallax effect to hero icons
-  document.addEventListener('mousemove', (e) => {
-    const icons = document.querySelectorAll('.hero-icon');
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
-
-    icons.forEach((icon, index) => {
-      const speed = (index + 1) * 0.1;
-      const xOffset = (x - 0.5) * speed * 100;
-      const yOffset = (y - 0.5) * speed * 100;
-      icon.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${xOffset * 0.1}deg)`;
-    });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const quantityInputs = document.querySelectorAll('.quantity-controls input');
-  const cartButtons = document.querySelectorAll('.btn-cart');
-
-  quantityInputs.forEach((input, index) => {
-    input.addEventListener('change', function() {
-      const value = parseInt(this.value);
-      const cartButton = cartButtons[index];
-      
-      if (value === 0) {
-        cartButton.textContent = 'Add to Cart';
-        cartButton.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
-      } else {
-        cartButton.textContent = 'Update Cart';
-        cartButton.innerHTML = '<i class="fas fa-sync-alt"></i> Update Cart';
-      }
-    });
   });
 });
 </script>

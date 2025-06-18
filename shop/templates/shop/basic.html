@@ -19,9 +19,9 @@
         background-color: #dfd7d7
       }
        .navbar-nav .nav-link {
-    font-weight: 500;
+    font-weight: 500 !important;
     color: #333 !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
   }
 
   .navbar-nav .nav-link:hover {
@@ -29,28 +29,28 @@
   }
 
   .form-inline input {
-    width: 220px;
+    width: 220px !important;
   }
 
   .btn {
-    font-weight: 500;
+    font-weight: 500 !important;
   }
 
   @media (max-width: 991.98px) {
     .form-inline {
-      margin-top: 10px;
-      flex-direction: column;
-      align-items: stretch;
+      margin-top: 10px !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
     }
 
     .form-inline input,
     .form-inline button {
-      width: 100%;
-      margin-bottom: 8px;
+      width: 100% !important;
+      margin-bottom: 8px !important;
     }
 
     .navbar-nav {
-      flex-direction: column;
+      flex-direction: column !important;
     }
   }
 
@@ -189,67 +189,67 @@
 
   /* Transparent Navbar (default) */
   .navbar {
-    background: transparent !important;
-    box-shadow: none;
-    backdrop-filter: none;
-    transition: background 0.3s, color 0.3s;
+    background: transparent;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    transition: background 0.3s, color 0.3s !important;
   }
   .navbar .nav-link, .navbar .navbar-brand, .navbar .btn, .navbar .dropdown-toggle {
     color: #fff !important;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.25);
-    transition: color 0.3s;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.25) !important;
+    transition: color 0.3s !important;
   }
   .navbar .btn-outline-success, .navbar .btn-outline-primary {
-    border-color: #fff;
+    border-color: #fff !important;
     color: #fff !important;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.08) !important;
   }
   .navbar .btn-outline-success:hover, .navbar .btn-outline-primary:hover {
-    background: #fff;
+    background: #fff !important;
     color: #007bfe !important;
   }
   .navbar .btn-dark {
-    background: #fff;
-    color: var(--accent, #007bfe);
-    border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    position: relative;
-    transition: background 0.3s, color 0.3s;
+    background: #fff !important;
+    color: var(--accent, #007bfe) !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10) !important;
+    position: relative !important;
+    transition: background 0.3s, color 0.3s !important;
   }
   .navbar .btn-dark i {
-    color: var(--accent, #007bfe);
-    font-weight: bold;
-    transition: color 0.3s;
+    color: var(--accent, #007bfe) !important;
+    font-weight: bold !important;
+    transition: color 0.3s !important;
   }
   .navbar .btn-dark #cart {
-    color: var(--accent, #007bfe);
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-left: 2px;
-    margin-right: 2px;
+    color: var(--accent, #007bfe) !important;
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
   }
   .navbar .dropdown-menu {
-    background: rgba(30,30,30,0.97);
-    color: #fff;
+    background: rgba(30,30,30,0.97) !important;
+    color: #fff !important;
   }
   .navbar .dropdown-item {
-    color: #fff;
+    color: #fff !important;
   }
   .navbar .dropdown-item:hover {
-    background: #007bfe;
-    color: #fff;
+    background: #007bfe !important;
+    color: #fff !important;
   }
   /* Solid Navbar (on scroll) */
   .navbar.solid-navbar {
     background: #fff !important;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
   }
   .navbar.solid-navbar .nav-link,
   .navbar.solid-navbar .navbar-brand,
   .navbar.solid-navbar .btn,
   .navbar.solid-navbar .dropdown-toggle {
-    color: #222 !important;
-    text-shadow: none;
+    color: #333 !important;
+    text-shadow: none !important;
   }
   .navbar.solid-navbar .btn-outline-success, .navbar.solid-navbar .btn-outline-primary {
     border-color: #007bfe;
@@ -348,7 +348,8 @@
     .hero-search-form .input-group { font-size: 1rem; }
   }
   body {
-    background: #fff !important;
+    /* background: #fff !important; */
+    background: #e2dada42 !important;
   }
   .card-body {
   background-color: #f6f6f6;
@@ -442,6 +443,8 @@ window.addEventListener('DOMContentLoaded', function() {
           <div class="dropdown-menu shadow-sm border-0">
             <a class="dropdown-item py-2" href="#"><i class="fas fa-pizza-slice mr-2"></i>Pizza</a>
             <a class="dropdown-item py-2" href="#"><i class="fas fa-hamburger mr-2"></i>Burger</a>
+            <a class="dropdown-item py-2" href="#"><i class="fas fa-hamburger mr-2"></i>Drinks</a>
+
           </div>
         </li>
         <li class="nav-item mx-1"><a class="nav-link px-2" href="/shop/tracker"><i class="fas fa-truck mr-1"></i>Tracker</a></li>
@@ -645,9 +648,68 @@ window.addEventListener('DOMContentLoaded', function() {
         </script>
     {% endif %}
     {% block body %} {% endblock %}
-    <div class="footer container-fluid bg-dark text-light">
-        <p class="text-center py-2 mb-0">Copyright © 2025 Designed by Axix Technologies <a href="" target="_blank" rel="noopener noreferrer">@AxixTechnologies</a></p>
-    </div>
+
+
+
+    
+   <div class="footer container-fluid text-light">
+  <div class="footer-content">
+    <p class="text-center mb-0 py-3">
+      Copyright © 2025 Designed by 
+      <a href="https://axixtechnologies.com" target="_blank" rel="noopener noreferrer" class="company-link">@AxixTechnologies</a>
+    </p>
+  </div>
+</div>
+
+<style>
+.footer {
+  background: linear-gradient(135deg, #000000eb 0%, #154578 100%) !important;/* Deep navy to blue */
+  border-top: 2px solid #3B82F6; /* Tailwind blue-500 */
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.company-link {
+  color: #93C5FD !important; /* Light bluish */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+}
+
+.company-link:hover {
+  color: #3B82F6 !important; /* Hover blue */
+}
+
+.company-link:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #3B82F6;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.company-link:hover:after {
+  transform: scaleX(1);
+}
+</style>
+
+
+
+
+
+
+
+
 
 
   <!-- Optional JavaScript -->

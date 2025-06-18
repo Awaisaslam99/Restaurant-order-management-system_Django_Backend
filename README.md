@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Restaurant_management_system
 
 ## Project Video Link : https://youtu.be/cpPmBlvtdrs
@@ -39,3 +40,6 @@
 
     username:"dkp" password:"Dkp@4321"
 
+=======
+# restaurant_management_system
+>>>>>>> f5db0a26dc0f8141722fbcf4c0e58eac23b6051a

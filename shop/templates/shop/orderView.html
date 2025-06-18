@@ -3,6 +3,12 @@
 
 
 {% block css %}
+    a.nav-link.px-2 {
+        color: black !important;
+    }
+    a.navbar-brand.font-weight-bold.d-flex.align-items-center {
+    color: black !important;
+    }
     body {
         overflow-x: hidden;
         width: 100%;
@@ -351,7 +357,9 @@
         }
         .navbar, .table-title, .table-wrapper .btn, .order-card-list, #citems, .alert, .alert-link, .copyright, .container > .row, .container > .col-sm-8, .container > .col-sm-4 {
             display: none !important;
+            <!-- background: black !important; -->
         }
+        
         .table-wrapper {
             box-shadow: none;
             padding: 0;
