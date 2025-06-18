@@ -223,12 +223,12 @@
       itemHtml += `
         <li class="list-group-item d-flex justify-content-between align-items-center">
           ${i++}. ${name}
-          <span class="badge badge-primary badge-pill">${qty} x ₹${price} = ₹${lineTotal}</span>
+          <span class="badge badge-primary badge-pill">${qty} x Rs${price} = Rs${lineTotal}</span>
         </li>`;
     }
     itemHtml += `
       <li class="list-group-item d-flex justify-content-between align-items-center bg-light font-weight-bold">
-        Total: <span class="badge badge-danger badge-pill" id="totalPrice">₹${totalPrice}</span>
+        Total: <span class="badge badge-danger badge-pill" id="totalPrice">Rs${totalPrice}</span>
       </li>`;
     $('#items').html(itemHtml);
   }

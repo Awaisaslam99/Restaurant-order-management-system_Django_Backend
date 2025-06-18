@@ -28,6 +28,16 @@
     color: #007bff !important;
   }
 
+  #popcart {
+    transition: all 0.3s ease;
+  }
+  #popcart:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+
   .form-inline input {
     width: 220px !important;
   }
@@ -35,6 +45,27 @@
   .btn {
     font-weight: 500 !important;
   }
+
+.custom-cart-btn {
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to right, #ffffff, #f9f9f9);
+  border: 1px solid #dee2e6;
+}
+
+.custom-cart-btn:hover {
+  background: linear-gradient(to right, #007bff, #339af0);
+  color: white;
+}
+
+.custom-cart-btn:hover i,
+.custom-cart-btn:hover span {
+  color: white !important;
+}
+
+.custom-cart-btn .badge {
+  background-color: #007bff;
+}
+
 
   @media (max-width: 991.98px) {
     .form-inline {
@@ -477,12 +508,27 @@ window.addEventListener('DOMContentLoaded', function() {
         </li>
         {% endif %}
         <li class="nav-item">
-          <button class="btn btn-dark rounded-pill d-flex align-items-center px-3 py-1" id="popcart"
-            data-container="body" data-html="true" data-toggle="popover" title="MyCart" data-placement="bottom" data-content="Bottom popover">
-            <i class="fas fa-shopping-cart mr-2"></i>
-            <span>(<span id="cart">0</span>)</span>
-          </button>
-        </li>
+  <button
+    id="popcart"
+    class="btn rounded-pill d-flex align-items-center px-4 py-2 shadow border-0 bg-white position-relative custom-cart-btn"
+    data-container="body"
+    data-html="true"
+    data-toggle="popover"
+    title="MyCart"
+    data-placement="bottom"
+    data-content="Bottom popover"
+  >
+    <i class="fas fa-cart-shopping fa-lg text-primary mr-2"></i>
+    <span class="font-weight-semibold text-dark">Cart</span>
+    <span
+      id="cart"
+      class="badge badge-pill badge-primary ml-2"
+      style="font-size: 0.8rem; padding: 5px 10px;"
+    >0</span>
+  </button>
+</li>
+
+
       </ul>
     </div>
   </div>
